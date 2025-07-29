@@ -1,8 +1,14 @@
 <!-- templates/home.html -->
 {% extends "_base.html" %}
-
-{% block title %}Home{% endblock title %}
-
+{% block title %}Accueil{% endblock title %}
 {% block content %}
-<h1>This is our home page.</h1>
+  <h1>Ceci est notre page d'accueil.</h1>
+  {% if user.is_authenticated %}
+    <p>Bonjour {{ user.email }} !</p>
+    <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+  {% else %}
+    <p>Vous n'êtes pas connecté</p>
+    <a href="{% url 'login' %}">Se connecter</a>
+    <a href="{% url 'signup' %}">S'inscrire</a>
+  {% endif %}
 {% endblock content %}
