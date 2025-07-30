@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Tiers
+    "crispy_forms",        # nouveau
+    "crispy_bootstrap5",   # nouveau
     # Applications locales
     "accounts.apps.AccountsConfig",  # nouveau
     "pages.apps.PagesConfig", # new
@@ -55,6 +58,9 @@ MIDDLEWARE = [
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 ROOT_URLCONF = 'django_project.urls'
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # nouveau
+CRISPY_TEMPLATE_PACK = "bootstrap5"           # nouveau
 
 TEMPLATES = [
     {
@@ -75,7 +81,6 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home" 
-
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -125,6 +130,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_STORAGE = "django.contrib.staticfiles.storage.StaticFilesStorage" 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
