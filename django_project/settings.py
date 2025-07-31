@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     # Tiers
     "crispy_forms",        # nouveau
     "crispy_bootstrap5",   # nouveau
+    "allauth",              # nouveau
+    "allauth.account",
     # Applications locales
     "accounts.apps.AccountsConfig",  # nouveau
     "pages.apps.PagesConfig", # new
@@ -56,11 +58,32 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_REDIRECT_URL = "home"
+ACCOUNT_LOGOUT_REDIRECT = "home"
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",  # nouveau
+)
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
 AUTH_USER_MODEL = "accounts.CustomUser"
 ROOT_URLCONF = 'django_project.urls'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"  # nouveau
 CRISPY_TEMPLATE_PACK = "bootstrap5"           # nouveau
+
+ACCOUNT_SESSION_REMEMBER = True  # nouveau
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  # nouveau
+
+ACCOUNT_USERNAME_REQUIRED = False  # nouveau
+ACCOUNT_AUTHENTICATION_METHOD = "email"  # nouveau
+ACCOUNT_EMAIL_REQUIRED = True  # nouveau
+ACCOUNT_UNIQUE_EMAIL = True  # nouveau
+
+# Configuration de django-allauth
+SITE_ID = 1  # nouveau
 
 TEMPLATES = [
     {
@@ -79,8 +102,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
 
-LOGIN_REDIRECT_URL = "home"
-LOGOUT_REDIRECT_URL = "home" 
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
