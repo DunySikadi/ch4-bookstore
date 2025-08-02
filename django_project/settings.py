@@ -11,9 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-from environs import Env  # type: ignore # nouveau
+from environs import env  # type: ignore
 
-env = Env()               # nouveau
 env.read_env()            # nouveau
 
 
@@ -85,6 +84,8 @@ ACCOUNT_USERNAME_REQUIRED = False  # nouveau
 ACCOUNT_AUTHENTICATION_METHOD = "email"  # nouveau
 ACCOUNT_EMAIL_REQUIRED = True  # nouveau
 ACCOUNT_UNIQUE_EMAIL = True  # nouveau
+DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"  # Nouveau
+
 
 # Configuration de django-allauth
 SITE_ID = 1  # nouveau
