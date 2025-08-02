@@ -22,5 +22,6 @@ urlpatterns = [
     path("", include("pages.urls")),  # nouveau
     # Gestion des utilisateurs
     path("accounts/", include("allauth.urls")),  # nouveauu
+    path("books/", include("books.urls")),
 
 ]
