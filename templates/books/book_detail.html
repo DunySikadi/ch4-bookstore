@@ -5,6 +5,11 @@
 
 {% block content %}
 <div class="book-detail">
+    {% if book.cover %}
+        <img class="bookcover" src="{{ book.cover.url }}" alt="{{ book.title }}">
+    {% else %}
+        <img class="bookcover" src="{% static 'images/default_cover.jpg' %}" alt="Couverture par défaut">
+    {% endif %}
     <h2><a href="">{{ book.title }}</a></h2>
     <p>Auteur : {{ book.author }}</p>
     <p>Prix : {{ book.price }}</p>
